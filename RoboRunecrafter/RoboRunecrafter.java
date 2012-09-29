@@ -1,3 +1,5 @@
+package RoboRunecrafter;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,9 +12,13 @@ import org.powerbot.core.script.job.state.Tree;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.util.Random;
 
-@Manifest(authors = { "RobotNinja" }, name = "TestScript", 
-		description = "Testing a script for GitHub")
-public class TreeCrafterTemplate extends ActiveScript implements PaintListener {
+import roborunecrafter.tasks.Chop;
+import roborunecrafter.tasks.Chop;
+import roborunecrafter.util.Paint;
+import roborunecrafter.util.GUI;
+
+@Manifest(authors = { "RobotNinja" }, name = "RoboRunecrafter", description = "Crafts runes at almost ever altar (GITHUB)", version = 0.1, website = "N/A")
+public class RoboRunecrafter extends ActiveScript implements PaintListener {
 
 	private final List<Node> jobsCollection = Collections.synchronizedList(new ArrayList<Node>());
 	private Tree jobContainer = null;
@@ -26,7 +32,7 @@ public class TreeCrafterTemplate extends ActiveScript implements PaintListener {
 
 	@Override
 	public void onStart() {
-		provide(new Chop(), new Drop());
+		//provide(new FIRST TASK(), new SECOND TASK());
 	}
 
 	@Override
