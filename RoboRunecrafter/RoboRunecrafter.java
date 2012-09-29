@@ -1,4 +1,4 @@
-package RoboRunecrafter;
+package roborunecrafter;
 
 import java.awt.Graphics;
 import java.util.ArrayList;

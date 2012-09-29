@@ -1,50 +1,55 @@
-import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+package roborunecrafter.tasks;
 
-import org.powerbot.core.event.listeners.PaintListener;
-import org.powerbot.core.script.ActiveScript;
+import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
-import org.powerbot.core.script.job.state.Tree;
-import org.powerbot.game.api.Manifest;
-import org.powerbot.game.api.util.Random;
+import org.powerbot.game.api.methods.Walking;
+import org.powerbot.game.api.methods.interactive.Players;
+import org.powerbot.game.api.methods.node.SceneEntities;
+import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.methods.widget.Camera;
+import org.powerbot.game.api.util.Timer;
+import org.powerbot.game.api.wrappers.node.SceneObject;
 
-@Manifest(authors = { "RobotNinja" }, name = "TestScript", 
-		description = "Testing a script for GitHub")
-public class TreeCrafterTemplate extends ActiveScript implements PaintListener {
+public class Chop extends Node {
 
-	private final List<Node> jobsCollection = Collections.synchronizedList(new ArrayList<Node>());
-	private Tree jobContainer = null;
+	private final int[] treeId = { 38760, 38782, 38783, 38784, 38785, 38786, 38787, 38788 };
+	private SceneObject lastClicked = null;
 
-	public final void provide(final Node... jobs) {
-		for (final Node job : jobs) {
-			jobsCollection.add(job);
+	private boolean isChopping() {
+		if (lastClicked != null && !lastClicked.validate()) {
+			lastClicked = null;
+			return false;
 		}
-		jobContainer = new Tree(jobsCollection.toArray(new Node[jobsCollection.size()]));
+		return lastClicked != null && Players.getLocal().getAnimation() != -1;
 	}
 
 	@Override
-	public void onStart() {
-		provide(new Chop(), new Drop());
+	public boolean activate() {
+		return !Inventory.isFull() && SceneEntities.getNearest(treeId) != null && !isChopping();
 	}
 
 	@Override
-	public int loop() {
-		if (jobContainer != null) {
-			final Node job = jobContainer.state();
-			if (job != null) {
-				jobContainer.set(job);
-				getContainer().submit(job);
-				job.join();
+	public void execute() {
+		SceneObject tree = SceneEntities.getNearest(treeId);
+		if (tree != null) {
+			if (tree.isOnScreen()) {
+				if (tree.interact("Chop")) {
+					lastClicked = tree;
+					final Timer t = new Timer(1000);
+					while (t.isRunning() && !isChopping()) {
+						if (Players.getLocal().isMoving()) {
+							t.reset();
+						}
+						Task.sleep(50);
+					}
+				}
+			} else {
+				Camera.turnTo(tree);
+				if (!tree.isOnScreen()) {
+					Walking.walk(tree);
+				}
 			}
 		}
-		return Random.nextInt(10, 50);
-	}
-
-	@Override
-	public void onRepaint(Graphics render) {
-		Paint.drawPaint(render);
 	}
 
 }
