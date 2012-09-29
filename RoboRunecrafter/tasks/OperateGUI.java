@@ -1,4 +1,4 @@
-package roborunecrafter.tasks;
+package RoboRunecrafter.tasks;
 
 import org.powerbot.core.script.job.Task;
 import org.powerbot.core.script.job.state.Node;
@@ -10,7 +10,7 @@ import org.powerbot.game.api.methods.widget.Camera;
 import org.powerbot.game.api.util.Timer;
 import org.powerbot.game.api.wrappers.node.SceneObject;
 
-public class Chop extends Node {
+public class OperateGUI extends Node {
 
 	private final int[] treeId = { 38760, 38782, 38783, 38784, 38785, 38786, 38787, 38788 };
 	private SceneObject lastClicked = null;

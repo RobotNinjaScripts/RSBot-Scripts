@@ -1,4 +1,4 @@
-package roborunecrafter;
+package RoboRunecrafter;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -12,10 +12,14 @@ import org.powerbot.core.script.job.state.Tree;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.util.Random;
 
-import roborunecrafter.tasks.Chop;
-import roborunecrafter.tasks.Chop;
-import roborunecrafter.util.Paint;
-import roborunecrafter.util.GUI;
+import RoboRunecrafter.tasks.GetEssence;
+import RoboRunecrafter.tasks.SwapRunes;
+import RoboRunecrafter.tasks.WalkToAltar;
+import RoboRunecrafter.tasks.EnterAltar;
+import RoboRunecrafter.tasks.CraftRunes;
+import RoboRunecrafter.tasks.ExitAltar;
+import RoboRunecrafter.tasks.WalkToBank;
+import RoboRunecrafter.util.Paint;
 
 @Manifest(authors = { "RobotNinja" }, name = "RoboRunecrafter", description = "Crafts runes at almost ever altar (GITHUB)", version = 0.1, website = "N/A")
 public class RoboRunecrafter extends ActiveScript implements PaintListener {
@@ -32,7 +36,13 @@ public class RoboRunecrafter extends ActiveScript implements PaintListener {
 
 	@Override
 	public void onStart() {
-		//provide(new FIRST TASK(), new SECOND TASK());
+		provide(new GetEssence(),
+				new SwapRunes(),
+				new WalkToAltar(),
+				new EnterAltar(),
+				new CraftRunes(),
+				new ExitAltar(),
+				new WalkToBank());
 	}
 
 	@Override
@@ -50,7 +60,7 @@ public class RoboRunecrafter extends ActiveScript implements PaintListener {
 
 	@Override
 	public void onRepaint(Graphics render) {
-		Paint.drawPaint(render);
+		Paint.drawPaintAndCursor(render);
 	}
 
 }
