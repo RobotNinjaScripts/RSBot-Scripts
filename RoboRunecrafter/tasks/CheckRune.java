@@ -2,7 +2,7 @@ package RoboRunecrafter.tasks;
 
 import org.powerbot.core.script.job.state.Node;
 
-public class CHECK_RUNE extends Node{
+public class CheckRune extends Node{
 
 	@Override
 	public boolean activate() {

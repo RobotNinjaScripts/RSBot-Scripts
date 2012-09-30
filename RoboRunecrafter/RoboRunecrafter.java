@@ -12,6 +12,7 @@ import org.powerbot.core.script.job.state.Tree;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.util.Random;
 
+import RoboRunecrafter.tasks.CheckRune;
 import RoboRunecrafter.tasks.GetEssence;
 import RoboRunecrafter.tasks.SwapRunes;
 import RoboRunecrafter.tasks.WalkToAltar;
@@ -21,7 +22,7 @@ import RoboRunecrafter.tasks.ExitAltar;
 import RoboRunecrafter.tasks.WalkToBank;
 import RoboRunecrafter.util.Paint;
 
-@Manifest(authors = { "RobotNinja" }, name = "RoboRunecrafter", description = "Crafts runes at almost ever altar (GITHUB)", version = 0.1, website = "N/A")
+@Manifest(authors = { "RobotNinja" }, name = "RoboRunecrafter", description = "Crafts runes at almost every altar", version = 0.1, website = "N/A")
 public class RoboRunecrafter extends ActiveScript implements PaintListener {
 
 	private final List<Node> jobsCollection = Collections.synchronizedList(new ArrayList<Node>());
@@ -36,7 +37,8 @@ public class RoboRunecrafter extends ActiveScript implements PaintListener {
 
 	@Override
 	public void onStart() {
-		provide(new GetEssence(),
+		provide(new CheckRune(),
+				new GetEssence(),
 				new SwapRunes(),
 				new WalkToAltar(),
 				new EnterAltar(),
