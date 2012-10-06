@@ -9,4 +9,4 @@ Use of the scripts within the RSBot client is open for everyone.
 Scripts:
 ================
 
-RoboRunecrafter - Crafts runes at most altars. [DEV]
+RoboRunecrafter - Crafts runes at most ever altar. [BETA]
