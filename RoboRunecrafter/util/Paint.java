@@ -37,7 +37,7 @@ public class Paint {
 	public static int expGained = 0;
 	public static int expHour = 0;
 	public static String selectedRune = "null";
-	public static String version = "0.1";
+	public static String version = "0.2";
 	public static String status = "Nothing.";
 	public static String DEV = "null";
 

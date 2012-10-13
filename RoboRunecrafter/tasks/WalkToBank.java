@@ -23,12 +23,12 @@ public class WalkToBank extends Node{
     public void execute(){
 	
     //Code to execute:
-		if (Resources.goToBank == true && !Resources.BANK_AREA.contains(Players.getLocal().getLocation()) && Inventory.contains(Resources.RUNE_ID)) {
+		if (Resources.goToBank == true && !Resources.BANK_AREA.contains(Players.getLocal().getLocation()) && Inventory.getItem(Resources.RUNE_ID) != null) {
 		    Paint.status = "Walking to bank...";
 			Walking.newTilePath(Resources.ALTAR_PATH).reverse().traverse();
 				//PLAYER IS OUTSIDE ALTAR WITH RUNES, WALK TO BANK
 		} else {
-			if (Resources.goToBank == true && Resources.BANK_AREA.contains(Players.getLocal().getLocation()) && Inventory.contains(Resources.RUNE_ID)) {
+			if (Resources.goToBank == true && Resources.BANK_AREA.contains(Players.getLocal().getLocation()) && Inventory.getItem(Resources.RUNE_ID) != null) {
 				Resources.banking = true;
 				Resources.goToBank = false;
 			}

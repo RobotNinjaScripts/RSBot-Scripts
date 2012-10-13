@@ -31,37 +31,39 @@ public class EnterAltar extends Node{
 		
 		if (Resources.enterAltar == true && Resources.ASTRAL_RUNE_VALIDATE == false) {
 			if (!Resources.ALTAR_AREA.contains(Players.getLocal().getLocation())) {
-				if (INSIDE_ALTAR.isOnScreen()) {
-					if (Players.getLocal().getAnimation() != Resources.CRAFT_ANIMATION) {
-						Resources.enterAltar = false;
-						Resources.craftRunes = true;
+				if (INSIDE_ALTAR != null){
+				    if (INSIDE_ALTAR.isOnScreen()) {
+					    if (Players.getLocal().getAnimation() != Resources.CRAFT_ANIMATION) {
+						    Resources.enterAltar = false;
+						    Resources.craftRunes = true;
+					    }
 					}
 				} else {
 					Camera.turnTo(INSIDE_ALTAR);
 				}
 			}
-		}		
-		if (Resources.enterAltar == true && OUTSIDE_ALTAR.isOnScreen() && Resources.ASTRAL_RUNE_VALIDATE == false && OUTSIDE_ALTAR != null) {
-		    Paint.status = "Entering altar...";
-			Camera.turnTo(OUTSIDE_ALTAR);
-			OUTSIDE_ALTAR.interact("Enter");
-			Task.sleep(1000, 1500);
-
-		if (Resources.enterAltar == true && INSIDE_ALTAR.isOnScreen() && !OUTSIDE_ALTAR.isOnScreen()) {
-			Resources.enterAltar = false;
-			Resources.craftRunes = true;
-			
+		}
+		if (OUTSIDE_ALTAR != null){
+		    if (Resources.enterAltar == true && OUTSIDE_ALTAR.isOnScreen() && Resources.ASTRAL_RUNE_VALIDATE == false && OUTSIDE_ALTAR != null) {
+		        Paint.status = "Entering altar...";
+			    Camera.turnTo(OUTSIDE_ALTAR);
+			    OUTSIDE_ALTAR.interact("Enter");
+			    Task.sleep(1000, 1500);
+		    }
+		}
 		if (Resources.enterAltar == true && Resources.ASTRAL_RUNE_VALIDATE == true && Resources.ALTAR_AREA.contains(Players.getLocal().getLocation())) {
 			Resources.enterAltar = false;
 			Resources.craftRunes = true;
 		}
+		if (Resources.enterAltar == true && INSIDE_ALTAR.isOnScreen() && !OUTSIDE_ALTAR.isOnScreen()) {
+			Resources.enterAltar = false;
+			Resources.craftRunes = true;
 		
 		} else {
 			Camera.turnTo(INSIDE_ALTAR);
 			if (Resources.enterAltar == true && !OUTSIDE_ALTAR.isOnScreen() && !Resources.ALTAR_AREA.contains(Players.getLocal().getLocation())) {
 				Resources.enterAltar = false;
 				Resources.craftRunes = true;
-			}
 			}
 		}
 	}

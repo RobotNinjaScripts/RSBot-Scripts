@@ -31,9 +31,11 @@ public class WalkToAltar extends Node{
 			Task.sleep(1000, 1500);
 			if (Resources.ALTAR_PATH != null) {
 			    Walking.newTilePath(Resources.ALTAR_PATH).traverse();
-			    if (Resources.ALTAR_AREA.contains(Players.getLocal().getLocation()) && Resources.ALTAR_AREA != null || OUTSIDE_ALTAR.isOnScreen() && OUTSIDE_ALTAR != null) {
-				    Resources.goToAltar = false;
-				    Resources.enterAltar = true;
+			    if (Resources.ALTAR_AREA != null && OUTSIDE_ALTAR != null){
+			        if (Resources.ALTAR_AREA.contains(Players.getLocal().getLocation()) && Resources.ALTAR_AREA != null || OUTSIDE_ALTAR.isOnScreen() && OUTSIDE_ALTAR != null) {
+				        Resources.goToAltar = false;
+				        Resources.enterAltar = true;
+			        }
 			    }
 			}
 			//PLAYER IS IN BANK WITH ESSENCE, WALK TO ALTAR

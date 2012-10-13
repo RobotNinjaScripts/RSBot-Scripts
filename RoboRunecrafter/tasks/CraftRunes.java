@@ -27,10 +27,11 @@ public class CraftRunes extends Node{
     //Code to execute:
 		SceneObject INSIDE_ALTAR = SceneEntities.getNearest(Resources.INSIDE_ALTAR_ID);
 		
-		if (Resources.craftRunes == true && Players.getLocal().getAnimation() != Resources.CRAFT_ANIMATION && Inventory.contains(Resources.ESSENCE_ID)) {
+		if (Resources.craftRunes == true && Players.getLocal().getAnimation() != Resources.CRAFT_ANIMATION && Inventory.getItem(Resources.ESSENCE_ID) != null) {
 		    Paint.status = "Crafting runes...";
 			Task.sleep(1000, 1500);
 			if (INSIDE_ALTAR != null){
+				Walking.walk(INSIDE_ALTAR);
 			    Camera.turnTo(INSIDE_ALTAR);
 			    Task.sleep(1000, 1500);
 			    if (INSIDE_ALTAR != null){	
@@ -43,7 +44,7 @@ public class CraftRunes extends Node{
 			    }
 			}
 		}	
-		if (Resources.craftRunes == true && Inventory.contains(Resources.RUNE_ID) && !Inventory.contains(Resources.ESSENCE_ID) && Players.getLocal().getAnimation() != Resources.CRAFT_ANIMATION) {
+		if (Resources.craftRunes == true && Inventory.getItem(Resources.RUNE_ID) != null && Inventory.getItem(Resources.ESSENCE_ID) == null && Players.getLocal().getAnimation() != Resources.CRAFT_ANIMATION) {
 			Paint.runeCount = Inventory.getItem(Resources.RUNE_ID).getStackSize();
 			Paint.runesCrafted = Paint.runesCrafted + Paint.runeCount;
 			Paint.runeCount = 0;

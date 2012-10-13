@@ -22,7 +22,7 @@ import RoboRunecrafter.tasks.ExitAltar;
 import RoboRunecrafter.tasks.WalkToBank;
 import RoboRunecrafter.util.Paint;
 
-@Manifest(authors = { "RobotNinja" }, name = "RoboRunecrafter", description = "Crafts runes at almost every altar", version = 0.1, website = "N/A")
+@Manifest(authors = { "RobotNinja" }, name = "RoboRunecrafter", description = "Crafts runes at almost every altar", version = 0.2, website = "http://www.powerbot.org/community/topic/820286-beta-roborunecrafter-crafts-almost-every-rune/")
 public class RoboRunecrafter extends ActiveScript implements PaintListener {
 	
 	public void updatePaint() {

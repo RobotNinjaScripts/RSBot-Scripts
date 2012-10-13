@@ -41,7 +41,7 @@ public class BankingMethod extends Node{
 		        Bank.withdraw(Resources.ESSENCE_ID, 0);
 		        Bank.close();
 		        Task.sleep(1000, 1500);
-		        if (Inventory.contains(Resources.ESSENCE_ID) && !Inventory.contains(Resources.RUNE_ID)) {
+		        if (Inventory.getItem(Resources.ESSENCE_ID) != null && Inventory.getItem(Resources.RUNE_ID) == null) {
 				    Resources.banking = false;
 				    Resources.goToAltar = true;
 			    }
@@ -56,7 +56,7 @@ public class BankingMethod extends Node{
 	            Paint.status = "Run out of essence.";
 	        }
 	    } else {
-		    if (Resources.banking == true && Inventory.contains(Resources.ESSENCE_ID) && !Inventory.contains(Resources.RUNE_ID)){
+		    if (Resources.banking == true && Inventory.getItem(Resources.ESSENCE_ID) != null && Inventory.getItem(Resources.RUNE_ID) == null){
 			    Resources.banking = false;
 			    Resources.goToAltar = true;
 		    }
