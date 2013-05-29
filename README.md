@@ -9,9 +9,9 @@ Use of the scripts within the RSBot/Powerbot client is open for everyone.
 Scripts:
 ================
 
-RoboRunecrafter - Crafts runes at most ever altar.
+RoboCooker - Cooks raw food at Al Kharid. [OPEN SOURCE]
 
-RoboCooker - Cooks raw food at a selected destination. [OPEN SOURCE]
+RoboRunecrafter - Crafts runes at most ever altar.
 
 RoboBarrows - Completes the barrows mini game.
 
@@ -21,4 +21,4 @@ RoboBonfires - Lights bonfires.
 
 ================
 
-NOTE: Not all of these scripts are avalible on the Powerbot SDN, however they may be added later.
+NOTE: Not all of these scripts are avalible on the Powerbot SDN or this respository, however they may be added later.
